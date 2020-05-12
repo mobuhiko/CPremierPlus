@@ -1,0 +1,26 @@
+#include <stdio.h>
+void br();
+void ic();
+
+int main(void) {
+	//first line
+	br();
+	printf(", ");
+	ic();
+	printf("\n");
+	//second line
+	ic();
+	printf(", \n");
+	//third line
+	br();
+
+	return 0;
+}
+
+void br() {
+	printf("Brazil, Russia");
+}
+
+void ic() {
+	printf("India, China");
+}
