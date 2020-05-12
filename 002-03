@@ -1,0 +1,8 @@
+#include <stdio.h>
+int main(void) {
+	int age = 24;
+	int day = 365 * age;
+	printf("I am %d years old. That is %d days long. \n", age, day);
+
+	return 0;
+}
