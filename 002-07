@@ -1,0 +1,22 @@
+#include <stdio.h>
+void smile();
+
+int main(void) {
+
+	smile();
+	smile();
+	smile();
+	printf("\n");	//line 1
+
+	smile();
+	smile();
+	printf("\n");	//line 2
+
+	smile();	//line 3
+
+	return 0;
+}
+
+void smile() {
+	printf("Smile!");
+}
