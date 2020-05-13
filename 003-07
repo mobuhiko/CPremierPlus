@@ -1,0 +1,18 @@
+#include <stdio.h> 
+
+int main(void) {
+	/* inch to cm */
+	float height_inch_1;
+	printf("enter your height in inch.\n");
+	scanf("%f", &height_inch_1);
+	float height_cm_1 = height_inch_1 * 2.54;
+	printf("%f inches = %f cm\n", height_inch_1, height_cm_1);
+
+	/* cm to inch */
+	float height_cm_2;
+	printf("enter your height in inch.\n");
+	scanf("%f", &height_cm_2);
+	float height_inch_2 = height_cm_2 / 2.54;
+	printf("%f cm = %f inches\n", height_cm_2, height_inch_2);
+	return 0;
+}
