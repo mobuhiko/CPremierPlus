@@ -3,7 +3,7 @@
 int main(void) {
 	char first_name[30], last_name[30];
 	printf("enter your name.\n");
-	scanf("%29s %29s", first_name, last_name);
+	scanf("%29s %29s", first_name, last_name); // %29s + '\n' = 30
 	printf("your name is %s, %s", first_name, last_name);
 	return 0;
 }
