@@ -1,0 +1,9 @@
+#include <stdio.h> 
+
+int main(void) {
+	int ascii;
+	printf("enter a number\n");
+	scanf("%d", &ascii);
+	printf("you enter %d, which is %c.\n", ascii, ascii);
+	return 0;
+}
