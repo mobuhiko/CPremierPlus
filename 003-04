@@ -1,0 +1,9 @@
+#include <stdio.h> 
+
+int main(void) {
+	float float_number;
+	printf("enter a float number.\n");
+	scanf("%f", &float_number);
+	printf("the float number you enter is %f, which is also %e and %a.\n", float_number, float_number, float_number);
+	return 0;
+}
