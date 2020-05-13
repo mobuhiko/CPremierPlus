@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <float.h>
+#define mile2kilometer 1.609
+#define gallon2liter 3.785
+
+int main(void) {
+	
+	float distance, petrol_consumed;
+	printf("enter the distance of the travel. (mile)\n");
+	scanf("%f", &distance);
+	printf("enter the petrol consumed. (gallon)\n");
+	scanf("%f", &petrol_consumed);
+	printf("%.1f miles-per-gallon\n", distance / petrol_consumed);
+	printf("%.1f liters-per-100-km\n", 
+		(petrol_consumed * gallon2liter) / (distance * mile2kilometer / 100));
+	// liter per 100 km = liter / (km / 100) 
+	return 0;
+}
