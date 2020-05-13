@@ -1,0 +1,9 @@
+#include <stdio.h> 
+
+int main(void) {
+	int water_quarts;
+	printf("enter the amount of water in quarts.\n");
+	scanf("%d", &water_quarts);
+	printf("it has %e of water molecules.\n", water_quarts * 950 * 3.0E-23);
+	return 0;
+}
