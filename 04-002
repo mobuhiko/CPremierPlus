@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+int main(void) {
+	char first_name[30], last_name[30];
+
+	printf("enter your first name.\n");
+	scanf("%s", first_name);
+	printf("enter your last name.\n");
+	scanf("%s", last_name);
+
+	printf("a. ");
+	printf("\"%s\" \"%s\"\n", first_name, last_name);
+
+	printf("b. ");
+	printf("\"%-20s\" \"%-20s\"\n", first_name, last_name);
+
+	printf("c. ");
+	printf("\"%20s\" \"%20s\"\n", first_name, last_name);
+
+	int first_name_length = strlen(first_name) + 3;
+	int last_name_length = strlen(last_name) + 3;
+	printf("d. ");
+	printf("%*s %*s\n", first_name_length, first_name, last_name_length, last_name);
+	return 0;
+}
