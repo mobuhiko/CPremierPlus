@@ -1,0 +1,9 @@
+#include <stdio.h> 
+
+int main(void) {
+	int age;
+	printf("enter your age.\n");
+	scanf("%d", &age);
+	printf("it is %e seconds.\n", age * 3.156E7);
+	return 0;
+}
