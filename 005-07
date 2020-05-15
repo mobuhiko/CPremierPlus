@@ -1,0 +1,14 @@
+#include <stdio.h>
+double cube(double x);
+int main(void) {
+	double number;
+	printf("enter a double number;");
+	scanf("%lf", &number);
+	printf("the cube of %lf is %lf\n", number, cube(number));
+	return 0;
+}
+
+double cube(double x) {
+	double result = x * x * x;
+	return result;
+}
