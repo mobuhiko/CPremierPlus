@@ -1,0 +1,22 @@
+#include <stdio.h>
+void Tempueratures(temperature_F);
+
+int main(void) {
+	double temperature_F;
+	printf("enter a Fahrenheit temperature (press \"q\" to quit)\n");
+	while (scanf("%lf", &temperature_F) == 1) {
+		Tempueratures(temperature_F);
+		printf("enter a Fahrenheit temperature (press \"q\" to quit)\n");
+	}
+	
+	return 0;
+}
+
+void Tempueratures(double temperature_F) {
+	double temperature_C, temperature_K;
+	const double F2C_1 = 5.0 / 9.0, F2C_2 = 32.0;
+	const double C2K = 273.16;
+	temperature_C = F2C_1 * (temperature_F - F2C_2);
+	temperature_K = temperature_C + C2K;
+	printf("%lfF = %lfC = %lfK\n", temperature_F, temperature_C, temperature_K);
+}
