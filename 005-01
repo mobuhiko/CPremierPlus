@@ -1,0 +1,15 @@
+#include <stdio.h>
+#define H2MIN 60
+
+int main(void) {
+	int min, hour;
+	min = hour = 0;
+	printf("enter the minutes\n");
+	scanf("%d", &min);
+	while (min > 0) {
+		printf("%d hours %d minutes\n", (int)min / H2MIN, min % H2MIN);
+		printf("enter the minutes\n");
+		scanf("%d", &min);
+	}
+	return 0;
+}
