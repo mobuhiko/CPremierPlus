@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main(void) {
+	int days;
+	printf("enter the days\n");
+	scanf("%d", &days);
+	while (days > 0) {
+		int week = 0;
+		int day = 0;
+		week = days / 7;
+		day = days % 7;
+		printf("%d days are %d weeks, %d days.\n", days, week, day);
+		printf("enter the days\n");
+		scanf("%d", &days);
+	}
+	
+	return 0;
+}
