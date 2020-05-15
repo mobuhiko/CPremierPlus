@@ -1,0 +1,16 @@
+#include <stdio.h>
+#define H2MIN 60
+
+int main(void) {
+	int int_num;
+	printf("enter an int number\n");
+	scanf("%d", &int_num);
+	int counter = 0;
+	while (counter <= 10) {
+		printf("%d ", int_num);
+		int_num++;
+		counter++;
+	}
+	
+	return 0;
+}
