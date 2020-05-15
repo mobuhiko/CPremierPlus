@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main(void) 
+{
+	int days;
+	printf("how many days?\n");
+	scanf("%d", &days);
+	int count, sum;
+	count = 0;  
+	sum = 0;  
+	while (count++ < days)  
+		sum = sum + count;    
+	printf("you can earn %d dollars in %d days\n", sum, days);
+	return 0;                   
+}
