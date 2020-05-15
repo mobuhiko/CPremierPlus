@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main(void) {
+	float height_cm;
+	printf("enter a height in centimeters: ");
+	scanf("%f", &height_cm);
+	while (height_cm > 0) {
+		float height_inch;
+		int height_feet;
+		height_inch = height_cm / 2.54;
+		height_feet = height_inch / 12;
+		height_inch = height_inch - height_feet * 12;
+		printf("%.1f cm = %d feet, %.1f inches\n", height_cm, height_feet, height_inch);
+		printf("enter a height in centimeters: (<=0 to quit)");
+		scanf("%f", &height_cm);
+	}
+	printf("bye\n");
+	return 0;
+}
