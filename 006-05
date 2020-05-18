@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main(void) {
+	
+	char input;
+	printf("enter a capital letter\n");
+	scanf("%c", &input);
+	if (input < 65 || input > 90) {
+		printf("please restart the program and enter the capital letter.\n");
+		exit();
+	}
+  
+  int i, j, k;
+	int max = input - 65 + 1;
+	for (i = 0; i < max; i++) {
+		char ch = 'A';
+		for (j = 0; j <= i; j++) {
+			printf("%c", ch);
+			ch += 1;
+		}
+		ch--;
+		for (k = 0; k <= i - 1; k++) {
+			ch -= 1;
+			printf("%c", ch);
+		}
+
+		printf("\n");
+	}
+	return 0;
+}
