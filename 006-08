@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+	float a, b;
+	printf("enter two float numbers.\n");
+	while (scanf("%f %f", &a, &b) != 0) {
+		printf("the result is %f\n", (a - b) / (a * b));
+		printf("enter two float numbers.\n");
+	}
+
+	return 0;
+}
