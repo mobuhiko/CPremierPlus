@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main(void) {
+
+	int lower_int, upper_int;
+	printf("Enter lower and upper integer limits: ");
+	scanf("%d %d", &lower_int, &upper_int);
+	while (lower_int < upper_int) {
+		printf("The sums of the squares from %d to %d is "
+			, lower_int * lower_int
+			, upper_int * upper_int);
+		
+		int sum = 0;
+		for (lower_int; lower_int <= upper_int; lower_int++) {
+			sum += lower_int * lower_int;
+		}
+		printf("%d\n", sum);
+
+		printf("Enter the next set of limits: ");
+		scanf("%d %d", &lower_int, &upper_int);
+	}
+	printf("Done\n");
+
+	return 0;
+}
