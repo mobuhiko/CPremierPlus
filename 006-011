@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main(void) {
+
+	int array[8];
+	int i;
+	printf("enter eight numbers.\n");
+	for (i = 0; i < 8; i++) {
+		printf("the %dth number is ", i + 1);
+		scanf("%d", &array[i]);
+	}
+
+	printf("original array: {");
+	for (i = 0; i < 8; i++) {
+		printf("%d, ", array[i]);
+	}
+	printf("}\n");
+
+	printf("new array     : {");
+	for (i = 7; i >= 0; i--) {
+		printf("%d, ", array[i]);
+	}
+	printf("}\n");
+
+	return 0;
+}
