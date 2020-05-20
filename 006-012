@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main(void) {
+	int n;
+	printf("the end is ?\n");
+	scanf("%ld", &n);
+
+	if (n < 1) {
+		printf("please restart the program and enter a proper number.\n");
+		exit();
+	}
+
+	float sum_1 = 0;
+	float sum_2 = 0;
+	int i;
+	for (i = 1; i <= n; i++) { // close to infinity
+		sum_1 += (float)1 / i; 
+	}
+
+	for (i = 1; i <= n; i++) { // close to ln2 (0.69314 71805)
+		if (i % 2 == 1) {
+			sum_2 = sum_2 + (float)1 / i;
+		}
+		else {
+			sum_2 = sum_2 - (float)1 / i;
+		}
+	}
+
+	printf("result 1 from 1 to %d is %f\n", n, sum_1);
+	printf("result 2 from 1 to %d is %f\n", n, sum_2);
+	return 0;
+}
