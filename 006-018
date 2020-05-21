@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main(void) {
+	
+	int week = 0;
+	int friend_0 = 5;
+	int total_friend = 0;
+
+	printf("WEEK     FRIENDS\n");
+	for (week;; week++) {
+		if (week == 0) {
+			total_friend = friend_0;
+		}
+		else {
+			total_friend -= week;
+			total_friend *= 2;
+		}
+
+		printf("%4d     %7d\n", week, total_friend);
+
+		if (total_friend > 150) {
+			break;
+		}
+	}
+
+	printf("After %d weeks, the number of Rabnud's friends is greater than 150\n", week);
+	return 0;
+}
