@@ -1,0 +1,43 @@
+#include <stdio.h>
+#define interest_rate_Daphne 0.1
+#define interest_rate_Deirdre 0.05
+
+int main(void) {
+	
+	int year = 0;
+	float total_Daphne = 0, total_Deirdre = 0;
+	float par_Daphne = 100, par_Deirdre = 100;
+	float interest_Daphne = 0, interest_Deirdre = 0;
+
+	printf("Year   Daphne   Deirdre\n");
+	
+	// year 0 to year n
+	for (year = 0;; year++) {
+		printf("%4d ", year);
+
+		if (year == 0) {
+			total_Daphne = par_Daphne;
+			total_Deirdre = par_Deirdre;
+		}
+		else {
+			// Daphne
+			const interest_Daphne = par_Daphne * interest_rate_Daphne;
+			total_Daphne += interest_Daphne;
+
+			// Deirdre
+			par_Deirdre = total_Deirdre;
+			interest_Deirdre = par_Deirdre * interest_rate_Deirdre;
+			total_Deirdre += interest_Deirdre;
+		}
+		
+		printf("%8.2f %8.2f\n", total_Daphne, total_Deirdre);
+
+		if (total_Daphne < total_Deirdre) {
+			break;
+		}
+	}
+
+	printf("after %d years, Daphne will be less than Deirdre\n", year);
+
+	return 0;
+}
