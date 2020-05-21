@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+	char something[256];
+	printf("enter something. (limits: 255 characters)\n");
+
+	int i = -1;
+	do {
+		i++;
+		scanf("%c", &something[i]);
+	} while (something[i] != '\n');
+
+	int j = i;
+	for (j; j > 0; j--) {
+		printf("%c", something[j - 1]);
+	}
+	printf("\n");
+
+	return 0;
+}
