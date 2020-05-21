@@ -1,0 +1,27 @@
+#include <stdio.h>
+#define interest_rate_chuckie 0.08
+
+int main(void) {
+	
+	int year = 0;
+	float total_chuckie = 1000000;
+	float par_chuckie = 1000000;
+	float interest_chukie = 0;
+	printf(" year      total\n");
+	printf("    0   1000000.00\n");
+
+	for (year = 1;; year++) {
+		interest_chukie = par_chuckie * interest_rate_chuckie;
+		total_chuckie += interest_chukie;
+		total_chuckie -= 100000;
+		par_chuckie = total_chuckie;
+		if (total_chuckie < 0) {
+			printf(" %4d     NONE LEFT\n", year);
+			printf("after %d years, there is no money left\n", year);
+			break;
+		}
+		printf(" %4d    %7.2f\n", year, total_chuckie);
+	}
+
+	return 0;
+}
