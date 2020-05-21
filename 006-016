@@ -6,7 +6,7 @@ int main(void) {
 	
 	int year = 0;
 	float total_Daphne = 0, total_Deirdre = 0;
-	float par_Daphne = 100, par_Deirdre = 100;
+	float principal_Daphne = 100, principal_Deirdre = 100;
 	float interest_Daphne = 0, interest_Deirdre = 0;
 
 	printf("Year   Daphne   Deirdre\n");
@@ -16,17 +16,17 @@ int main(void) {
 		printf("%4d ", year);
 
 		if (year == 0) {
-			total_Daphne = par_Daphne;
-			total_Deirdre = par_Deirdre;
+			total_Daphne = principal_Daphne;
+			total_Deirdre = principal_Deirdre;
 		}
 		else {
 			// Daphne
-			const interest_Daphne = par_Daphne * interest_rate_Daphne;
+			const interest_Daphne = principal_Daphne * interest_rate_Daphne;
 			total_Daphne += interest_Daphne;
 
 			// Deirdre
 			par_Deirdre = total_Deirdre;
-			interest_Deirdre = par_Deirdre * interest_rate_Deirdre;
+			interest_Deirdre = principal_Deirdre * interest_rate_Deirdre;
 			total_Deirdre += interest_Deirdre;
 		}
 		
