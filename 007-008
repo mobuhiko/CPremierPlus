@@ -1,0 +1,119 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define OVERTIME_WORK_STANDARD 40 // overtime = more than 40 hours
+#define BASE_SALARY_1 8.75
+#define BASE_SALARY_2 9.33
+#define BASE_SALARY_3 10.00
+#define BASE_SALARY_4 11.20
+#define OVERTIME_WORK_SALARY 1.5 // 1.5 * base
+#define TAX_RATE_BREAKPOINT_1 300
+#define TAX_RATE_UP_TO_300 0.15 // salary <= 300: 15%
+#define TAX_RATE_BREAKPOINT_2 450
+#define TAX_RATE_FROM_300_TO_450 0.2 // 300 < salary <= 450: 20%
+#define TAX_RATE_OVER_450 0.25 // salary > 450: 25%
+float revenue_calculation(float work_hour, float base_salary);
+float tax_calculation(float work_hour, float base_salary);
+float net_income_calculation(float work_hour, float base_salary);
+void menu();
+float get_work_hour();
+
+int main(void) {
+	
+	menu();
+	
+	return 0;
+}
+
+float revenue_calculation(float work_hour, float base_salary) {
+	float revenue = 0;
+	if (work_hour <= OVERTIME_WORK_STANDARD) {
+		revenue = base_salary * work_hour;
+	}
+	else if (work_hour > OVERTIME_WORK_STANDARD) {
+		revenue = base_salary * OVERTIME_WORK_STANDARD
+			+ OVERTIME_WORK_SALARY * base_salary * (work_hour - OVERTIME_WORK_STANDARD);
+	}
+	return revenue;
+}
+
+float tax_calculation(float work_hour, float base_salary) {
+	float revenue, tax;
+	revenue = revenue_calculation(work_hour, base_salary);
+	if (revenue <= TAX_RATE_BREAKPOINT_1) {
+		tax = revenue * TAX_RATE_UP_TO_300;
+	}
+	else if (revenue > TAX_RATE_BREAKPOINT_1 || revenue <= TAX_RATE_BREAKPOINT_2) {
+		tax = TAX_RATE_BREAKPOINT_1 * TAX_RATE_UP_TO_300
+			+ (revenue - TAX_RATE_BREAKPOINT_1) * TAX_RATE_FROM_300_TO_450;
+	}
+	else {
+		tax = TAX_RATE_BREAKPOINT_1 * TAX_RATE_UP_TO_300
+			+ TAX_RATE_BREAKPOINT_2 * TAX_RATE_FROM_300_TO_450
+			+ (revenue - TAX_RATE_BREAKPOINT_2) * TAX_RATE_OVER_450;
+	}
+	return tax;
+}
+
+float net_income_calculation(float work_hour, float base_salary) {
+	float net_income = revenue_calculation(work_hour, base_salary) - tax_calculation(work_hour, base_salary);
+	return net_income;
+}
+
+void menu() {
+	float work_hour, base_salary, revenue, tax, net_income;
+	int pay_rate_level;
+	printf("******************************************************************\n");
+	printf("Enter the number corresponding to the desired pay rate or action: \n");
+	printf("1) $8.75/hr");
+	printf("               ");
+	printf("2) $9.33/hr");
+	printf("\n");
+	printf("3) $10.00/hr");
+	printf("               ");
+	printf("4) $11.20/hr");
+	printf("\n");
+	printf("5) quit");
+	printf("\n");
+	printf("******************************************************************\n");
+	scanf("%d", &pay_rate_level);
+
+	switch (pay_rate_level)
+	{
+	case 1:
+		base_salary = BASE_SALARY_1;
+		break;
+	case 2:
+		base_salary = BASE_SALARY_2;
+		break;
+	case 3:
+		base_salary = BASE_SALARY_3;
+		break;
+	case 4:
+		base_salary = BASE_SALARY_4;
+		break;
+	case 5:
+		exit(0);
+		break;
+	default:
+		printf("please enter the correct number\n");
+		menu();
+		break;
+	}
+
+	work_hour = get_work_hour();
+	revenue = revenue_calculation(work_hour, base_salary);
+	tax = tax_calculation(work_hour, base_salary);
+	net_income = net_income_calculation(work_hour, base_salary);
+	printf("REVENUE:    %.2f\nTAX:         %.2f\nNET INCOME: %.2f\n", revenue, tax, net_income);
+}
+
+float get_work_hour() {
+	float work_hour = 0;
+	printf("enter your work hour in one week\n");
+	scanf("%f", &work_hour);
+	if (work_hour > 168) {
+		printf("there must be something wrong with you\n");
+		exit(0);
+	}
+	return work_hour;
+}
