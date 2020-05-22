@@ -4,7 +4,7 @@ int main(void) {
 
 	int ch = 0;
 	int count_change = 0;
-
+	printf("enter something.\n");
 	while ((ch = getchar()) != '#') {
 		if (ch == '!') {
 			putchar('!');
