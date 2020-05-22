@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main(void) {
+
+	int ch = 0;
+	int count_change = 0;
+
+	while ((ch = getchar()) != '#') {
+		if (ch == '!') {
+			putchar('!!');
+			count_change++;
+		
+		}
+		else if (ch == '.') {
+			putchar('!');
+			count_change++;
+		}
+		else {
+			putchar(ch);
+		}
+	}
+	putchar('\n');
+	printf("Change %d times.\n", count_change);
+
+	return 0;
+}
