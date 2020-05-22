@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define OVERTIME_WORK_STANDARD 40 // overtime = more than 40 hours
+#define BASE_SALARY 1000 // $1000/hour
+#define OVERTIME_WORK_SALARY 1.5*1000 // $1500/hour
+#define TAX_RATE_BREAKPOINT_1 300
+#define TAX_RATE_UP_TO_300 0.15 // salary <= 300: 15%
+#define TAX_RATE_BREAKPOINT_2 450
+#define TAX_RATE_FROM_300_TO_450 0.2 // 300 < salary <= 450: 20%
+#define TAX_RATE_OVER_450 0.25 // salary > 450: 25%
+float revenue_calculation(float work_hour);
+float tax_calculation(float work_hour);
+float net_income_calculation(float work_hour);
+
+int main(void) {
+	float work_hour = 0;
+	printf("enter your work hour in one week\n");
+	scanf("%f", &work_hour);
+	if (work_hour > 168) {
+		printf("there must be something wrong with you\n");
+		exit(0);
+	}
+	float revenue = revenue_calculation(work_hour);
+	float tax = tax_calculation(work_hour);
+	float net_income = net_income_calculation(work_hour);
+
+	printf("REVENUE:    %.2f\nTAX:         %.2f\nNET INCOME: %.2f\n", revenue, tax, net_income);
+
+	return 0;
+}
+
+float revenue_calculation(float work_hour) {
+	float revenue = 0;
+	if (work_hour <= OVERTIME_WORK_STANDARD) {
+		revenue = BASE_SALARY * work_hour;
+	}
+	else if (work_hour > OVERTIME_WORK_STANDARD) {
+		revenue = BASE_SALARY * OVERTIME_WORK_STANDARD
+			+ OVERTIME_WORK_SALARY * (work_hour - OVERTIME_WORK_STANDARD);
+	}
+	return revenue;
+}
+
+float tax_calculation(float work_hour) {
+	float revenue, tax;
+	revenue = revenue_calculation(work_hour);
+	if (revenue <= TAX_RATE_BREAKPOINT_1) {
+		tax = revenue * TAX_RATE_UP_TO_300;
+	}
+	else if (revenue > TAX_RATE_BREAKPOINT_1 || revenue <= TAX_RATE_BREAKPOINT_2) {
+		tax = TAX_RATE_BREAKPOINT_1 * TAX_RATE_UP_TO_300
+			+ (revenue - TAX_RATE_BREAKPOINT_1) * TAX_RATE_FROM_300_TO_450;
+	}
+	else {
+		tax = TAX_RATE_BREAKPOINT_1 * TAX_RATE_UP_TO_300
+			+ TAX_RATE_BREAKPOINT_2 * TAX_RATE_FROM_300_TO_450
+			+ (revenue - TAX_RATE_BREAKPOINT_2) * TAX_RATE_OVER_450;
+	}
+	return tax;
+}
+
+float net_income_calculation(float work_hour) {
+	float net_income = revenue_calculation(work_hour) - tax_calculation(work_hour);
+	return net_income;
+}
