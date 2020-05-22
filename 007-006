@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main(void) {
+
+	int ch_current = 0;
+	int ch_previous = 0;
+	int count_ei = 0;
+	printf("enter something\n");
+
+	while ((ch_current = getchar()) != '#') {
+				
+		if (ch_current == 'i' && ch_previous == 'e') {
+			count_ei++;
+		}
+
+		ch_previous = ch_current;
+
+	}
+
+	printf("ei: %d times\n", count_ei);
+
+	return 0;
+}
