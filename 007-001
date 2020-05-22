@@ -1,0 +1,25 @@
+#include<stdio.h>
+
+int main(void) {
+	char ch = 0;
+	int space_counter = 0;
+	int newline_counter = 0;
+	int character_counter = 0;
+
+	printf("enter something\n");
+	while ((ch = getchar()) != '#') {
+		if (ch == ' ') {
+			space_counter++;
+		}
+		else if (ch == '\n') {
+			newline_counter++;
+		}
+		else {
+			character_counter++;
+		}
+	
+	}
+
+	printf("SPACE: %d NEWLINE: %d CHARACTER: %d\n", space_counter, newline_counter, character_counter);
+	return 0;
+}
