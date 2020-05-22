@@ -1,0 +1,29 @@
+#include<stdio.h>
+
+int main(void) {
+	int input;
+	int even_counter = 0;
+	int odd_counter = 0;
+	int even_sum = 0;
+	int odd_sum = 0;
+
+	printf("enter some integer numbers\n");
+	while (scanf("%d", &input)) {
+		if (input != 0 && input % 2 == 0) {
+			even_counter++;
+			even_sum += input;
+		}
+		else if (input % 2 == 1) {
+			odd_counter++;
+			odd_sum += input;
+		}
+		else if (input == 0) {
+			break;
+		}
+		
+	}
+	printf("there are %d even numbers. the average of them is %f.\n", even_counter, (float)even_sum / even_counter);
+	printf("there are %d odd numbers. the average of them is %f.\n", odd_counter, (float)odd_sum / odd_counter);
+	
+	return 0;
+}
