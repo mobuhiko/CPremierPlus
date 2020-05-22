@@ -1,0 +1,17 @@
+#include<stdio.h>
+
+int main(void) {
+	char ch = 0;
+	int count = 0;
+
+	printf("enter something\n");
+	while ((ch = getchar()) != '#') {
+		count++;
+		printf("%c: %3d ", ch, ch);
+		if (count % 8 == 0) {
+			putchar('\n');
+		}
+	}
+
+	return 0;
+}
