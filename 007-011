@@ -1,0 +1,108 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define ARTIHOKES 2.05 // a
+#define BEETS 1.15 // b
+#define CARROTS 1.09 // c
+#define DISCOUNT_BREAKPOINT 100
+#define DISCOUNT 0.05
+#define SHIPPING_1 6.5
+#define SHIPPING_BREAK_1 5
+#define SHIPPING_2 14
+#define SHIPPING_BREAK_2 20
+#define SHIPPING_3 0.5 // rate
+
+
+int main(void) {
+	float total_charges, discount, shipping_charges, grand_total;
+	float pounds_ordered, cost_of_a, cost_of_b, cost_of_c;
+	float pounds_of_a, pounds_of_b, pounds_of_c;
+	total_charges = discount = shipping_charges = grand_total = 0;
+	pounds_ordered = cost_of_a = cost_of_b = cost_of_c = 0;
+	pounds_of_a = pounds_of_b = pounds_of_c = 0;
+
+	int vegetable;
+	int continue_or_not;
+	;
+
+	printf("what do you want to order?\n");
+	printf("a - artihokes ($2.05/pound)\n");
+	printf("b - beets     ($1.15/pound)\n");
+	printf("c - carrots   ($1.09/pound)\n");
+	printf("q - quit\n");
+	while ((vegetable = getchar()) != 'q') {
+
+		// reset buffer? avoid the error occurs in the 2nd time order 
+		if (vegetable == '\n') {
+			continue;
+		}
+
+		float pounds_temp = 0;
+		switch (vegetable)
+		{
+		case 'a':
+			printf("how many pounds?\n");
+			scanf("%f", &pounds_temp);
+			pounds_of_a += pounds_temp;
+			break;
+		case 'b':
+			printf("how many pounds?\n");
+			scanf("%f", &pounds_temp);
+			pounds_of_b += pounds_temp;
+			break;
+		case 'c':
+			printf("how many pounds?\n");
+			scanf("%f", &pounds_temp);
+			pounds_of_c += pounds_temp;
+			break;
+		default:
+			printf("\aINVALID! Please try again\n");
+		}
+		printf("what do you want to order?\n");
+		printf("a - artihokes ($2.05/pound)\n");
+		printf("b - beets     ($1.15/pound)\n");
+		printf("c - carrots   ($1.09/pound)\n");
+		printf("q - quit\n");
+	}
+	
+	printf("thank you for your order.\n");
+
+	cost_of_a = ARTIHOKES * pounds_of_a;
+	cost_of_b = BEETS * pounds_of_b;
+	cost_of_c = CARROTS * pounds_of_c;
+	pounds_ordered = pounds_of_a + pounds_of_b + pounds_of_c;
+	total_charges = cost_of_a + cost_of_b + cost_of_c;
+
+	if (total_charges >= 100) {
+		discount = DISCOUNT * total_charges;
+	}
+	else {
+		discount = 0;
+	}
+
+	if (pounds_ordered <= SHIPPING_BREAK_1) {
+		shipping_charges = SHIPPING_1;
+	}
+	else if (pounds_ordered > SHIPPING_BREAK_1 && pounds_ordered <= SHIPPING_2) {
+		shipping_charges = SHIPPING_2;
+	}
+	else {
+		shipping_charges = SHIPPING_2 + SHIPPING_3 * (pounds_ordered - SHIPPING_BREAK_2);
+	}
+
+	grand_total = total_charges - discount + shipping_charges;
+
+	printf("               ORDER DETAIL            \n");
+	printf("ITEM              POUNDS          PRICE\n\n");
+	printf("ARTIHOKES @%.2f    %.2f          $%.2f\n", ARTIHOKES, pounds_of_a, cost_of_a);
+	printf("BEETS     @%.2f    %.2f          $%.2f\n", BEETS, pounds_of_b, cost_of_b);
+	printf("CARROTS   @%.2f    %.2f          $%.2f\n", CARROTS, pounds_of_c, cost_of_c);
+	printf("---------------------------------------\n");
+	printf("TOTAL WEIGHT:              %4.2f POUNDS\n", pounds_ordered);
+	printf("TOTAL COST:                      $%.2f\n", total_charges);
+	printf("DISCOUNT:                      ($%.2f)\n", discount);
+	printf("SHIPPING:                        $%.2f\n", shipping_charges);
+	printf("---------------------------------------\n");
+	printf("TOTAL GRAND:                     $%.2f\n", grand_total);
+	return 0;
+}
+
