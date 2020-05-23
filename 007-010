@@ -1,0 +1,77 @@
+#include <stdio.h>
+#define case_1_break 17850
+#define case_2_break 23900
+#define case_3_break 29750
+#define case_4_break 14875
+#define tax_rate_1 0.15
+#define tax_rate_2 0.28
+int menu();
+float tax_calculation(int status, float taxable_income);
+
+int main(void) {
+	float taxable_income, tax;
+	int choice;
+	do {
+		choice = menu();
+		printf("enter your taxable income\n");
+		scanf("%f", &taxable_income);
+		tax = tax_calculation(choice, taxable_income);
+		printf("You should pay $%.2f for the tax.\n", tax);
+		printf("do you want to enter again? (y/n)\n");
+		getchar();
+	} while (getchar() == 'y');
+
+	return 0;
+}
+
+int menu() {
+	int status;
+	printf("enter a number to choose your marital status (1 - 4)\n");
+	printf("1. Single\n");
+	printf("2. Head of Household\n");
+	printf("3. Married, Joint\n");
+	printf("4. Married, Separate\n");
+	scanf("%d", &status);
+	if (status != 1 && status != 2 && status != 3 && status != 4) {
+		printf("please try again\n");
+		return menu();
+	}
+	return status;
+}
+
+float tax_calculation(int status, float taxable_income) {
+	float tax;
+	if (status == 1) {
+		if (taxable_income <= case_1_break) {
+			tax = taxable_income * tax_rate_1;
+		}
+		else {
+			tax = case_1_break * tax_rate_1 + (taxable_income - case_1_break) * tax_rate_2;
+		}
+	}
+	else if (status == 2) {
+		if (taxable_income <= case_2_break) {
+			tax = taxable_income * tax_rate_1;
+		}
+		else {
+			tax = case_2_break * tax_rate_1 + (taxable_income - case_2_break) * tax_rate_2;
+		}
+	}
+	else if (status == 3) {
+		if (taxable_income <= case_1_break) {
+			tax = taxable_income * tax_rate_1;
+		}
+		else {
+			tax = case_3_break * tax_rate_1 + (taxable_income - case_3_break) * tax_rate_2;
+		}
+	}
+	else if (status == 4) {
+		if (taxable_income <= case_1_break) {
+			tax = taxable_income * tax_rate_1;
+		}
+		else {
+			tax = case_4_break * tax_rate_1 + (taxable_income - case_4_break) * tax_rate_2;
+		}
+	}
+	return tax;
+}
