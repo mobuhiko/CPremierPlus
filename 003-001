@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <limits.h>
+#include <float.h>
+
+int main(void) {
+	int max_int = INT_MAX;
+	int min_int = INT_MIN;
+	printf("max of int is %d\n", max_int);
+	printf("add 1: %d\n", max_int + 1);
+	printf("min of int is %d\n", min_int);
+	printf("minus 1: %d\n", min_int - 1);
+
+	float max_float = FLT_MAX;
+	float min_float = FLT_MIN;
+	printf("max of float is %e\n", max_float);
+	printf("add 1: %e\n", max_float + 1);
+	printf("min of float is %e\n", min_float);
+	printf("minus 1: %e\n", min_float - 1);
+	return 0;
+}
