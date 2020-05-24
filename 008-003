@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main(void) {
+	int ch;
+	printf("print something.\n");
+	unsigned int lower_counter = 0;
+	unsigned int upper_counter = 0;
+	 
+	while ((ch = getchar()) != EOF) {
+		if (islower(ch)) {
+			lower_counter++;
+		}
+		else if (isupper(ch)) {
+			upper_counter++;
+		}
+	}
+
+	printf("lowercase: %d\nuppercase; %d\n", lower_counter, upper_counter);
+
+	return 0;
+}
