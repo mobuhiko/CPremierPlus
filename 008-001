@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main(void) {
+	int ch;
+	printf("print something.\n");
+	unsigned int counter = 0;
+	// seems that you must end the program by starting a new line then ctrl+
+	// possible reason; When you input "asdf^Z" and enter, "asdf" is in buffer, "^Z" is not.  
+	while ((ch = getchar()) != EOF) { 
+		counter++;
+	}
+	printf("you have entered %d characters\n", counter);
+  
+	return 0;
+}
