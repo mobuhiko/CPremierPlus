@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main(void) {
+	int ch;
+	printf("print something.\n");
+	unsigned int counter = 0;
+	 
+	while ((ch = getchar()) != EOF) {
+		counter++;
+		if (counter == 10) {
+			printf("\n");
+			counter = 0;
+		}
+		if (ch == '\n') {
+			putchar('\n');
+			printf("\\");
+			printf("n");
+			continue;
+		}
+		if (ch == '\t') {
+			putchar('\t');
+			printf("\\");
+			printf("t");
+			continue;
+		}
+		putchar(ch);
+		printf("=%d ", ch);
+	}
+
+	return 0;
+}
