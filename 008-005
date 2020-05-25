@@ -1,0 +1,55 @@
+/* guess.c -- an inefficient and faulty number-guesser */  
+#include <stdio.h>  
+int main(void)  {      
+	int min = 0;
+	int max = 100;
+	int guess = (min + max) / 2;
+	printf("Pick an integer from 1 to 100. I will try to guess ");     
+	printf("it.\nRespond with a y if my guess is right and with");     
+	printf("\nan n if it is wrong.\n"); 
+
+
+	printf("Uh...is your number %d?\n", guess);
+
+	while (getchar() != 'y') {
+		
+		char guess_2;
+		char guess_3;
+		printf("is %d larger than your number? y/n ", guess);
+		if (max - min == 1) {
+			printf("Well, then, is it %d? ", min);
+			if (getchar() == 'y') {
+				break;
+			}
+			else if ( getchar() == 'n') {
+				printf("Well, then, is it %d? ", max);
+			}
+		}
+
+
+		if ((guess_2 = getchar()) == 'y') {
+			max = guess;
+			guess = (min + max) / 2;
+			printf("Well, then, is it %d? ", guess);
+			
+		}
+		else if ((guess_2 = getchar()) == 'n') {
+			min = guess;
+			guess = (min + max) / 2;
+			printf("Well, then, is it %d? ", guess);
+			
+		}
+
+		if (getchar() == 'y') {
+			break;
+		}
+		else {
+			continue;
+		}
+		
+	}
+		  
+	printf("I knew I could do it!\n");     
+
+	return 0;  
+}   
