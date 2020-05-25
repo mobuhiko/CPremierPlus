@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main(void) {
+	int ch = 0;
+	printf("print something\n");
+	int alphabet_counter = 0;
+	int word_counter = 0;
+	while ((ch = getchar()) != EOF) {
+		if (ch == '\n') {
+			continue;
+		}
+
+		if (ch == ' ') {
+			word_counter++;
+		}
+
+		if (isalpha(ch)) {
+			alphabet_counter++;
+		}
+
+	}
+
+	printf("%f alphabets per word", (float)alphabet_counter / word_counter);
+	return 0;
+}
