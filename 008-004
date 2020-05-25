@@ -7,7 +7,7 @@ int main(void) {
 	int alphabet_counter = 0;
 	int word_counter = 0;
 	while ((ch = getchar()) != EOF) {
-		if (ch == '\n' || ispunct(ch)) {
+		if (ch != '\n' || ispunct(ch)) {
 			continue;
 		}
 
