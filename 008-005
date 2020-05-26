@@ -10,7 +10,9 @@ int main(void)  {
 
 
 	printf("Uh...is your number %d?\n", guess);
-
+	// when you enter "y", the program probably won't work.
+	// then, press "enter" and the program will ask you again
+	// then, enter "y" , and it will continue
 	while (getchar() != 'y') {
 		
 		char guess_2;
