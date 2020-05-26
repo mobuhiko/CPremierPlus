@@ -20,15 +20,13 @@ int main(void) {
 		char guess_2;
 		char guess_3;
 		printf("is %d larger than your number? y/n ", guess);
-		if (max == min || max - min == 1) {
-			guess = min;
-			printf("Well, then, is it %d? ", guess);
-			
+		if (max - min == 1) {
+			printf("Well, then, is it %d? ", min);
 			if (getchar() == 'y') {
 				break;
 			}
 			else if (getchar() == 'n') {
-				printf("Well, then, is it %d? ", guess + 1);
+				printf("Well, then, is it %d? ", max);
 			}
 		}
 
@@ -59,3 +57,4 @@ int main(void) {
 
 	return 0;
 }
+
