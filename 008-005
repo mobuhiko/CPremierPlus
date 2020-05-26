@@ -1,12 +1,14 @@
-/* guess.c -- an inefficient and faulty number-guesser */  
+
+
+/* guess.c -- an inefficient and faulty number-guesser */
 #include <stdio.h>  
-int main(void)  {      
+int main(void) {
 	int min = 0;
 	int max = 100;
 	int guess = (min + max) / 2;
-	printf("Pick an integer from 1 to 100. I will try to guess ");     
-	printf("it.\nRespond with a y if my guess is right and with");     
-	printf("\nan n if it is wrong.\n"); 
+	printf("Pick an integer from 1 to 100. I will try to guess ");
+	printf("it.\nRespond with a y if my guess is right and with");
+	printf("\nan n if it is wrong.\n");
 
 
 	printf("Uh...is your number %d?\n", guess);
@@ -14,17 +16,19 @@ int main(void)  {
 	// then, press "enter" and the program will ask you again
 	// then, enter "y" , and it will continue
 	while (getchar() != 'y') {
-		
+
 		char guess_2;
 		char guess_3;
 		printf("is %d larger than your number? y/n ", guess);
-		if (max - min == 1) {
-			printf("Well, then, is it %d? ", min);
+		if (max == min || max - min == 1) {
+			guess = min;
+			printf("Well, then, is it %d? ", guess);
+			
 			if (getchar() == 'y') {
 				break;
 			}
-			else if ( getchar() == 'n') {
-				printf("Well, then, is it %d? ", max);
+			else if (getchar() == 'n') {
+				printf("Well, then, is it %d? ", guess + 1);
 			}
 		}
 
@@ -33,13 +37,13 @@ int main(void)  {
 			max = guess;
 			guess = (min + max) / 2;
 			printf("Well, then, is it %d? ", guess);
-			
+
 		}
 		else if ((guess_2 = getchar()) == 'n') {
 			min = guess;
 			guess = (min + max) / 2;
 			printf("Well, then, is it %d? ", guess);
-			
+
 		}
 
 		if (getchar() == 'y') {
@@ -48,10 +52,10 @@ int main(void)  {
 		else {
 			continue;
 		}
-		
-	}
-		  
-	printf("I knew I could do it!\n");     
 
-	return 0;  
-}   
+	}
+
+	printf("I knew I could do it!\n");
+
+	return 0;
+}
